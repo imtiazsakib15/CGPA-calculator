@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [cgpa, setCgpa] = useState(0);
+
   const firstSemCredit = 18.0;
   const secondSemCredit = 16.5;
   const thirdSemCredit = 18.0;
@@ -33,8 +34,18 @@ function App() {
     const seventh = form.seventh.value;
     const eighth = form.eighth.value;
 
-    const totalCgpa = (first * firstSemCredit) / totalCredit;
-    console.log(totalCgpa);
+    const totalCgpa =
+      (first * firstSemCredit +
+        second * secondSemCredit +
+        third * thirdSemCredit +
+        fourth * fourthSemCredit +
+        fifth * fifthSemCredit +
+        sixth * sixthSemCredit +
+        seventh * seventhSemCredit +
+        eighth * eighthSemCredit) /
+      totalCredit;
+
+    setCgpa(totalCgpa);
   };
 
   return (
@@ -44,46 +55,94 @@ function App() {
       </h1>
       <form
         onSubmit={handleCalculate}
-        className="max-w-6xl mx-auto py-3 sm:py-5"
+        className="max-w-72 mx-auto space-y-2.5 py-3 sm:py-5"
       >
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>1st Semester:</p>
-          <input className="border p-1 rounded" type="float" name="first" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="first"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>2nd Semester:</p>
-          <input className="border p-1 rounded" type="float" name="second" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="second"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>3rd Semester:</p>
-          <input className="border p-1 rounded" type="float" name="third" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="third"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>4th Semester:</p>
-          <input className="border p-1 rounded" type="float" name="fourth" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="fourth"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>5th Semester:</p>
-          <input className="border p-1 rounded" type="float" name="fifth" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="fifth"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>6th Semester:</p>
-          <input className="border p-1 rounded" type="float" name="sixth" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="sixth"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>7th Semester:</p>
-          <input className="border p-1 rounded" type="float" name="seventh" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="seventh"
+            required
+          />
         </div>
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-2">
           <p>8th Semester:</p>
-          <input className="border p-1 rounded" type="float" name="eighth" />
+          <input
+            className="border p-1 rounded"
+            type="float"
+            name="eighth"
+            required
+          />
         </div>
-        <button
-          className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg mt-4 sm:mt-6"
-          type="submit"
-        >
-          Calculate
-        </button>
+        <div className="text-center">
+          <button
+            className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg mt-2 sm:mt-4"
+            type="submit"
+          >
+            Calculate
+          </button>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-xl sm:text-2xl font-semibold">
+            CGPA: {cgpa.toFixed(2)}
+          </h2>
+        </div>
       </form>
     </div>
   );
