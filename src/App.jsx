@@ -12,16 +12,6 @@ function App() {
   const seventhSemCredit = 18.0;
   const eighthSemCredit = 18.0;
 
-  const totalCredit =
-    firstSemCredit +
-    secondSemCredit +
-    thirdSemCredit +
-    fourthSemCredit +
-    fifthSemCredit +
-    sixthSemCredit +
-    seventhSemCredit +
-    eighthSemCredit;
-
   const handleCalculate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,16 +24,45 @@ function App() {
     const seventh = form.seventh.value;
     const eighth = form.eighth.value;
 
-    const totalCgpa =
-      (first * firstSemCredit +
-        second * secondSemCredit +
-        third * thirdSemCredit +
-        fourth * fourthSemCredit +
-        fifth * fifthSemCredit +
-        sixth * sixthSemCredit +
-        seventh * seventhSemCredit +
-        eighth * eighthSemCredit) /
-      totalCredit;
+    let totalCgpa = 0;
+    let totalCredit = 0;
+
+    if (first !== "") {
+      totalCgpa += first * firstSemCredit;
+      totalCredit += firstSemCredit;
+    }
+    if (second !== "") {
+      totalCgpa += second * secondSemCredit;
+      totalCredit += secondSemCredit;
+    }
+    if (third !== "") {
+      totalCgpa += third * thirdSemCredit;
+      totalCredit += thirdSemCredit;
+    }
+    if (fourth !== "") {
+      totalCgpa += fourth * fourthSemCredit;
+      totalCredit += fourthSemCredit;
+    }
+    if (fifth !== "") {
+      totalCgpa += fifth * fifthSemCredit;
+      totalCredit += fifthSemCredit;
+    }
+    if (sixth !== "") {
+      totalCgpa += sixth * sixthSemCredit;
+      totalCredit += sixthSemCredit;
+    }
+    if (seventh !== "") {
+      totalCgpa += seventh * seventhSemCredit;
+      totalCredit += seventhSemCredit;
+    }
+    if (eighth !== "") {
+      totalCgpa += eighth * eighthSemCredit;
+      totalCredit += eighthSemCredit;
+    }
+
+    if (totalCredit > 0) {
+      totalCgpa /= totalCredit;
+    }
 
     setCgpa(totalCgpa);
   };
@@ -51,7 +70,7 @@ function App() {
   return (
     <div className="p-5 sm:p-10">
       <h1 className="text-xl sm:text-2xl font-bold text-center">
-        CGPA Calculator
+        NU CSE CGPA Calculator
       </h1>
       <form
         onSubmit={handleCalculate}
@@ -59,75 +78,35 @@ function App() {
       >
         <div className="grid grid-cols-2 gap-2">
           <p>1st Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="first"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="first" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>2nd Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="second"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="second" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>3rd Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="third"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="third" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>4th Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="fourth"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="fourth" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>5th Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="fifth"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="fifth" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>6th Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="sixth"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="sixth" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>7th Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="seventh"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="seventh" />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <p>8th Semester:</p>
-          <input
-            className="border p-1 rounded"
-            type="float"
-            name="eighth"
-            required
-          />
+          <input className="border p-1 rounded" type="float" name="eighth" />
         </div>
         <div className="text-center">
           <button
